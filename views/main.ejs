@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('layouts/header') %>
 <body>
-    <h2>Main page</h2>
-    
-</body>
-</html>
+    <div class="container">
+        <header>
+        <div class="header">
+            <img src="images/logo.jpg" alt="logo">
+            <h1>Healthy bites - Happy days</h1>
+        </div>
+        </header>
+
+<%- include('layouts/nav') %>
+
+    <img src="images/main.jpg"alt="food" class="main_img">
+
+    <main>
+        <h2>About</h2>
+
+        <p>Welcome to Kitchen Chronicles, where culinary passion meets storytelling! I'm Vineeth Kanoor, a home cook and food enthusiast, sharing my love for recipes that bring people together. From family heirlooms to modern twists, this blog captures the joy of cooking, experimenting, and savoring every bite. Expect hearty meals, quick bites, and tips to make your kitchen adventures unforgettable. Whether you're a seasoned chef or a curious beginner, there's a seat at my table for you. Join me as we explore flavors, traditions, and the magic of food—one delicious story at a time!</p>
+
+    </main>
+
+<%- include('layouts/footer') %>
