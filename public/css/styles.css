@@ -91,7 +91,7 @@ form{
 }
 
 /* CSS for the Logout link in admin home page */
-nav a:last-child{
+#logout{
     padding-left: 30%;
 }
 
@@ -109,4 +109,13 @@ nav a:last-child{
     font-size: 20px;
     padding-top: 4%;
     padding-bottom: 30%;
+}
+
+/* Form Error CSS */
+#form-error{
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
 }

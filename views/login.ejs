@@ -4,16 +4,34 @@
 
 <div class="login_form">
 <main>
-    <form>
+    <form action="/login" method="POST">
         <h2>Login</h2>
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" >
+
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" >
+            
         </div>
+
+        <div id="formError">
+            <% if (typeof formErrors != 'undefined') { %>
+                <% for (var er of formErrors) { %>
+                    <p><%= er.msg %></p>
+                <% } %>
+            <% } %>        
+            
+        
+
+        <% if (typeof errorMessage != 'undefined') { %>
+            <p><%= errorMessage %></p>
+        <% } %>
+
+    </div>
+
         <button type="submit">Submit</button>
     </form>
 </main>
