@@ -20,5 +20,16 @@ app.get('/login',(req,res)=>{
     res.render('login');
 });
 
+//Admin Home page after login
+app.get('/admin',(req,res)=>{
+    res.render('success_message',{
+        successMessage:"Welcome",
+        successText:"Hello Admin, Welcome to the dashboard!"
+    });
+});
+
+    
+
 app.listen(8000);
 console.log("Listening to port 8000");
+

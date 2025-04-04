@@ -89,3 +89,24 @@ form{
     margin-top: 10px;
     cursor: pointer;
 }
+
+/* CSS for the Logout link in admin home page */
+nav a:last-child{
+    padding-left: 30%;
+}
+
+/* CSS for the admin home page welcome message */
+.admin_home h2{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    padding-top: 4%;
+}
+
+.admin_home h3{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    padding-top: 4%;
+    padding-bottom: 30%;
+}
