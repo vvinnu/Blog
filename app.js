@@ -87,7 +87,15 @@ app.get('/admin',(req,res)=>{
 //Logout route to destroy the session
 app.get('/logout',(req,res)=>{
     req.session.destroy();
-    res.redirect('/');
+    res.render('success_message',{
+        successMessage:"Logout",
+        successText:"You have successfully logged out!",
+        loggedOut:"Yes"
+    });
+});
+
+app.get('/home',(req,res)=>{
+    res.render('main');
 });
 
     

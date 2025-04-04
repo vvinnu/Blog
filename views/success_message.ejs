@@ -1,5 +1,11 @@
 <%- include('layouts/header') %>
-<%- include('admin/nav') %>
+
+
+<% if (typeof loggedOut !== 'undefined' && loggedOut==="Yes") { %>
+    <%- include('layouts/nav') %> 
+<% } else { %>
+    <%- include('admin/nav') %>
+<% } %>
 
 <div class="admin_home">
 <main>
