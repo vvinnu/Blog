@@ -16,5 +16,9 @@ app.get('/',(req,res)=>{
     res.render('main');
 });
 
+app.get('/login',(req,res)=>{
+    res.render('login');
+});
+
 app.listen(8000);
 console.log("Listening to port 8000");
