@@ -13,5 +13,10 @@
         <div class="header">
             <img src="images/logo.jpg" alt="logo">
             <h1>Healthy bites - Happy days</h1>
+
+            <!-- Showing Welcome Admin Message if the admin is logged in -->
+            <% if(typeof isLoggedin !== 'undefined' && isLoggedin){%>
+            <h3 class="welcome_text">Welcome Admin!</h3>
+        <%}%>
         </div>
         </header>

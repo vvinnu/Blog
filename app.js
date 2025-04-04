@@ -10,6 +10,16 @@ app.set('views',path.join(__dirname,'views'));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine' , 'ejs');
 
+//Adding sessions
+
+var session = require('express-session');
+
+app.use(session({
+    secret:'mysecret',
+    resave:false,
+    saveUninitialized:true,
+}));
+
 
 //Connecting to MongoDB
 
@@ -47,6 +57,8 @@ app.post('/login',[
             });
         }else{
             console.log("Login Success");
+            //Setting the session variable to display Welcome Admin Message
+            req.session.isLoggedIn = true;
             return res.redirect('/admin');
         }
         }
@@ -67,8 +79,15 @@ app.get('/login',(req,res)=>{
 app.get('/admin',(req,res)=>{
     res.render('success_message',{
         successMessage:"Welcome",
-        successText:"Hello Admin, Welcome to the dashboard!"
+        successText:"Hello Admin, Welcome to the dashboard!",
+        isLoggedin:req.session.isLoggedIn
     });
+});
+
+//Logout route to destroy the session
+app.get('/logout',(req,res)=>{
+    req.session.destroy();
+    res.redirect('/');
 });
 
     

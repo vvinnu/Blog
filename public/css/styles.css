@@ -8,8 +8,15 @@
 
 }
 
-.header img,.header h1{
+.header img,.header h1, .welcome_text{
     display: inline-block;
+}
+
+.welcome_text{
+    font-size: 20px;
+    padding-left: 30%;
+    padding-top: 10px;
+    text-align: right;
 }
 header h1{
     vertical-align: top;
