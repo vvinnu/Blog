@@ -171,6 +171,154 @@ app.post('/admin/add-post', [
     }
 });
 
+// List all posts for editing
+app.get('/admin/posts', (req, res) => {
+    if (req.session.isLoggedIn) {
+        Post.find({}).then((posts) => {
+            res.render('admin/posts', {
+                posts: posts,
+                isLoggedin: req.session.isLoggedIn
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.render('admin/posts', {
+                posts: [],
+                isLoggedin: req.session.isLoggedIn
+            });
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// Delete a page
+app.get('/admin/delete-post/:id', (req, res) => {
+    if (req.session.isLoggedIn) {
+        Post.findByIdAndDelete(req.params.id).then(() => {
+            // Store the success message in the session
+            req.session.successMessage = "You have successfully deleted the page!";
+            // Redirect to the posts page
+            res.redirect('/admin/posts');
+        }).catch((err) => {
+            console.log(err);
+            res.render('admin/posts', {
+                posts: [],
+                isLoggedin: req.session.isLoggedIn,
+                errorMessage: "Error deleting the page"
+            });
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// Edit page form
+app.get('/admin/edit-post/:id', (req, res) => {
+    if (req.session.isLoggedIn) {
+        Post.findById(req.params.id).then((post) => {
+            if (!post) {
+                return res.render('success_message', {
+                    successMessage: "Error",
+                    successText: "Page not found",
+                    isLoggedin: req.session.isLoggedIn
+                });
+            }
+            res.render('admin/edit_post', {
+                post: post,
+                isLoggedin: req.session.isLoggedIn
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.render('success_message', {
+                successMessage: "Error",
+                successText: "Error loading the page",
+                isLoggedin: req.session.isLoggedIn
+            });
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// Handle editing a page
+app.post('/admin/edit-post/:id', [
+    check('title', 'Title Cannot be Empty').notEmpty(),
+    check('slug', 'Slug Cannot be Empty').notEmpty(),
+    check('content', 'Content Cannot be Empty').notEmpty()
+], (req, res) => {
+    if (req.session.isLoggedIn) {
+        var errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return Post.findById(req.params.id).then((post) => {
+                res.render('admin/edit_post', {
+                    post: post,
+                    formErrors: errors.array(),
+                    isLoggedin: req.session.isLoggedIn
+                });
+            });
+        }
+
+        // Prepare update data
+        var updateData = {
+            title: req.body.title,
+            slug: req.body.slug,
+            content: req.body.content
+        };
+
+        // Handle image upload if a new image is provided
+        if (req.files && req.files.image) {
+            var image = req.files.image;
+            var imageName = image.name;
+            var imagePath = 'public/uploads/' + imageName;
+
+            image.mv(imagePath).then(() => {
+                console.log("Image Upload Successful");
+                updateData.image = '/uploads/' + imageName;
+                // Update the post
+                Post.findByIdAndUpdate(req.params.id, updateData).then(() => {
+                    res.render('success_message', {
+                        successMessage: "Edit Page",
+                        successText: "You have successfully updated the page!",
+                        isLoggedin: req.session.isLoggedIn
+                    });
+                }).catch((err) => {
+                    console.log(err);
+                    res.render('admin/edit_post', {
+                        post: { _id: req.params.id, ...req.body },
+                        errorMessage: "Error updating the page",
+                        isLoggedin: req.session.isLoggedIn
+                    });
+                });
+            }).catch((err) => {
+                console.log(err);
+                res.render('admin/edit_post', {
+                    post: { _id: req.params.id, ...req.body },
+                    errorMessage: "Error uploading the image",
+                    isLoggedin: req.session.isLoggedIn
+                });
+            });
+        } else {
+            // Update the post without changing the image
+            Post.findByIdAndUpdate(req.params.id, updateData).then(() => {
+                res.render('success_message', {
+                    successMessage: "Edit Page",
+                    successText: "You have successfully updated the page!",
+                    isLoggedin: req.session.isLoggedIn
+                });
+            }).catch((err) => {
+                console.log(err);
+                res.render('admin/edit_post', {
+                    post: { _id: req.params.id, ...req.body },
+                    errorMessage: "Error updating the page",
+                    isLoggedin: req.session.isLoggedIn
+                });
+            });
+        }
+    } else {
+        res.redirect('/login');
+    }
+});
+
 //Logout route to destroy the session
 app.get('/logout',(req,res)=>{
     req.session.destroy();

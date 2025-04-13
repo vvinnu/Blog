@@ -66,3 +66,36 @@ form{
     color: red;
     text-align: center;
 }
+
+/* Styles for edit form image display */
+.form-group img {
+    display: block;
+    margin: 10px 0;
+}
+
+/* Style for the posts table */
+.posts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.posts-table th,
+.posts-table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+.posts-table th {
+    background-color: #f2f2f2;
+}
+
+.posts-table a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.posts-table a[href*="/delete-post"] {
+    color: red;
+}
