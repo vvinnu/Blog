@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitchen Chronicles</title>
     <link rel="stylesheet" href="css/styles.css">
+    <% if (typeof isLoggedin !== 'undefined' && isLoggedin) { %>
+        <link rel="stylesheet" href="/css/admin.css">
+    <% } %>
 </head>
 
 <body>
     <div class="container">
         <header>
         <div class="header">
-            <img src="images/logo.jpg" alt="logo">
+            <img src="/images/logo.jpg" alt="logo">
             <h1>Healthy bites - Happy days</h1>
 
             <!-- Showing Welcome Admin Message if the admin is logged in -->

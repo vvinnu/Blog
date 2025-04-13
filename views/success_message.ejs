@@ -1,19 +1,21 @@
 <%- include('layouts/header') %>
 
-
-<% if (typeof loggedOut !== 'undefined' && loggedOut==="Yes") { %>
-    <%- include('layouts/nav') %> 
+<% if (typeof loggedOut !== 'undefined' && loggedOut === "Yes") { %>
+    <%- include('layouts/nav') %>
 <% } else { %>
     <%- include('admin/nav') %>
 <% } %>
 
-<div class="admin_home">
-<main>
-    <h2><%= successMessage %></h2>
-
-    <h3><%= successText %> </h3>
-</main>
-
+<div class="container">
+    <div class="admin_home">
+        <main>
+            <h2><%= successMessage %></h2>
+            <h3><%= successText %></h3>
+            <% if (successMessage === "Add Page") { %>
+                <p><a href="/admin/posts">Back to Admin Panel</a></p>
+            <% } %>
+        </main>
+    </div>
 </div>
 
 <%- include('layouts/footer') %>
