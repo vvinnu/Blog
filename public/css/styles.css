@@ -1,95 +1,197 @@
-.container{
-    width: 1120px; /* increase the width of the body to make space for the sidebar on the right */
-    border: 2px solid black; /* add a 2px border in black around the content */
-    margin: 20px auto; /* 20px margin from top and bottom of the browser body and auto makes the content sit equidistant from the left and right of the browser body */
-    padding: 20px; /* make the content inside the body sit at a 20px gap from all the 4 sides */
-    border-radius: 10px; /* round the edges of the border */
-    font-family: sans-serif; /* change the default font to sans serif */
-
+/* Reset default styles for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.header img,.header h1, .welcome_text{
-    display: inline-block;
+body {
+    font-family: sans-serif;
+    color: #000;
 }
 
-.welcome_text{
-    font-size: 20px;
-    padding-left: 30%;
-    padding-top: 10px;
-    text-align: right;
-}
-header h1{
-    vertical-align: top;
+/* Container for consistent layout */
+div.container {
+    width: 1400px;
+    border: 2px solid black;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: calc(100vh - 40px);
 }
 
-header img{
+/* Header Styles */
+header {
+    margin-bottom: 20px;
+}
+
+div.header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add spacing between logo and title */
+}
+
+div.header img {
     width: 10%;
 }
-nav{
+
+div.header h1 {
+    font-size: 1.5rem;
+}
+
+div.welcome_text {
+    font-size: 20px;
+    margin-left: auto; /* Push welcome text to the right */
+}
+
+/* Navigation Styles */
+nav.public-nav {
     text-align: center;
     border: 2px solid black;
-    border-radius: 5px ;
-    padding: 10px 0px 10px 0px;
+    border-radius: 5px;
+    padding: 10px 0;
     background-color: antiquewhite;
-}
-nav a{
-    padding: 15px ;
+    margin-bottom: 20px;
 }
 
-
-.main_img{
-    padding-top: 20px;
-    width: 100%;
-    height: 250px;
+nav.public-nav a {
+    padding: 15px;
+    color: #000;
+    text-decoration: none;
 }
 
-main h2{
+nav.public-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Admin Navigation Styles */
+nav.admin-nav {
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px 0;
+    background-color: #d3e4cd;
+    margin-bottom: 20px;
+}
+
+nav.admin-nav a {
+    padding: 15px;
+    color: #000;
+    text-decoration: none;
+}
+
+nav.admin-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px 0;
+}
+
+main h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Homepage Post Previews */
+div.post-preview {
+    margin-bottom: 30px;
     text-align: center;
 }
 
-footer{
+div.post-preview h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+div.post-preview h3 a {
+    color: blue;
+    text-decoration: none;
+}
+
+div.post-preview h3 a:hover {
+    text-decoration: underline;
+}
+
+div.post-preview img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+/* Post Page Styles */
+div.post-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 20px 0;
+    text-align: center;
+}
+
+main p {
+    text-align: center;
+}
+
+main p a {
+    color: blue;
+    text-decoration: none;
+}
+
+main p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+footer {
     text-align: center;
     border: 2px solid black;
     padding: 10px;
     border-radius: 5px;
     background-color: antiquewhite;
+    margin-top: 20px;
 }
 
-form{
+/* Form Styles (for login and admin pages) */
+form {
     text-align: center;
     padding: 20px;
     border: 2px solid black;
     border-radius: 5px;
     background-color: antiquewhite;
     width: 50%;
+    margin: 0 auto;
 }
 
-.login_form{
-    width: 70%;
-    margin: 2% 10% 2% 30%;
+form.login_form {
+    width: 50%; /* Match the generic form width */
+    margin: 0 auto; /* Center the login form */
 }
 
-.form-group{
-    margin: 10px 0px 10px 0px;
-    
+div.form-group {
+    margin: 10px 0;
 }
 
-.form-group label{
+div.form-group label {
     width: 30%;
     display: inline-block;
     text-align: right;
     padding-right: 10px;
 }
-.form-group input{
+
+div.form-group input {
     width: 60%;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid black;
 }
-.login_form button{
+
+form.login_form button {
     width: 50%;
     padding: 10px;
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
     border: none;
     color: white;
     font-size: 18px;
@@ -98,19 +200,19 @@ form{
 }
 
 /* CSS for the Logout link in admin home page */
-#logout{
+#logout {
     padding-left: 30%;
 }
 
 /* CSS for the admin home page welcome message */
-.admin_home h2{
+div.admin_home h2 {
     text-align: center;
     margin-top: 20px;
     font-size: 30px;
     padding-top: 4%;
 }
 
-.admin_home h3{
+div.admin_home h3 {
     text-align: center;
     margin-top: 20px;
     font-size: 20px;
@@ -119,7 +221,7 @@ form{
 }
 
 /* Form Error CSS */
-#form-error{
+#form-error {
     color: red;
     font-size: 14px;
     margin-top: 5px;

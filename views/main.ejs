@@ -1,14 +1,12 @@
 <%- include('layouts/header') %>
 
-<%- include('layouts/nav') %>
-
-    <img src="images/main.jpg"alt="food" class="main_img">
-
+    <%- include('layouts/nav') %>
+    <% if (isLoggedin) { %>
+        <%- include('admin/nav') %>
+    <% } %>
     <main>
-        <h2>About</h2>
-
-        <p>Welcome to Kitchen Chronicles, where culinary passion meets storytelling! I'm Vineeth Kanoor, a home cook and food enthusiast, sharing my love for recipes that bring people together. From family heirlooms to modern twists, this blog captures the joy of cooking, experimenting, and savoring every bite. Expect hearty meals, quick bites, and tips to make your kitchen adventures unforgettable. Whether you're a seasoned chef or a curious beginner, there's a seat at my table for you. Join me as we explore flavors, traditions, and the magic of food—one delicious story at a time!</p>
-
+        <h2>Welcome to Kitchen Chronicles</h2>
+            <h3 style="text-align: center; padding-top:50px ;">Please Click on the above navigation links to read</h3>
     </main>
 
 <%- include('layouts/footer') %>
